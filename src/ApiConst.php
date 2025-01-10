@@ -21,6 +21,7 @@ class ApiConst
     
     const OKX_ACCESS_PASSPHRASE = 'OK-ACCESS-PASSPHRASE';
     
+    
     /**
      * WEBSOCKET验证登录地址
      *
@@ -32,6 +33,13 @@ class ApiConst
     const WEBSOCKET_PUBLIC_URL = 'ws://ws.okx.com:8443/ws/v5/public';
     // 业务频道
     const WEBSOCKET_BUSINESS_URL = 'ws://ws.okx.com:8443/ws/v5/business';
+    
+    // 虚拟盘公共链接
+    const WEBSOCKET_TEST_PUBLIC_URL = 'wss://wspap.okx.com:8443/ws/v5/public';
+    // 模拟盘私有链接
+    const WEBSOCKET_TEST_PRIVATE_URL = 'wss://wspap.okx.com:8443/ws/v5/private';
+    // 模拟盘业务链接
+    const WEBSOCKET_TEST_BUSINESS_URL = 'wss://wspap.okx.com:8443/ws/v5/business';
     
     // 设置杠杆
     const REST_SET_LEVERAGE = '/api/v5/account/set-leverage';
