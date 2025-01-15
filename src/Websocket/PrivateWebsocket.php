@@ -63,7 +63,6 @@ class PrivateWebsocket extends OkxSocket
      */
     public function onHandleMessage(array $message): void
     {
-        echo "{$this->factory->getWebsocket()->getTitle()}-{$this->factory->getWebsocket()->getChannel()},收到消息:" . json_encode($message) . PHP_EOL;
         if (isset($message['event']) && $message['event'] == 'login' && $message['code'] == 0) {
             // 订阅频道
             $this->subscribe($this->option['subscribes']);

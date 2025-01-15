@@ -26,9 +26,7 @@ class PublicWebsocket extends OkxSocket
     public function onConnect(OkxWebsocketConnection $con): void
     {
         // 订阅频道
-        echo "{$con->getTitle()}-{$con->getChannel()}-{$con->id} -> 链接建立!" . PHP_EOL;
         $this->subscribe($this->option['subscribes']);
-        
     }
     
     /**
@@ -38,6 +36,5 @@ class PublicWebsocket extends OkxSocket
      */
     public function onHandleMessage(array $message): void
     {
-        echo "{$this->factory->getWebsocket()->getTitle()}-收到消息:" . json_encode($message) . PHP_EOL;
     }
 }

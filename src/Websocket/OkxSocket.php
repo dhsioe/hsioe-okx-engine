@@ -70,7 +70,7 @@ class OkxSocket implements OkxSocketInterface
      */
     public function initSocketFactory(): void
     {
-        $this->factory = new WebsocketFactory($this->option['wss_url'], $this->option['ping_interval'],$this->option['proxy']??null);
+        $this->factory = new WebsocketFactory($this->option['wss_url'], $this->option['ping_interval'], $this->option['proxy'] ?? null);
         $this->factory->getWebsocket()->setLastPongTime(0);
         $this->factory->getWebsocket()->setAlreadyRunTs(0);
         $this->factory->getWebsocket()->setTitle($this->title);
@@ -193,7 +193,6 @@ class OkxSocket implements OkxSocketInterface
         // TODO: Implement onConnect method.
     }
     
-    
     /**
      * 链接断开回调
      * @throws \Exception
@@ -215,7 +214,6 @@ class OkxSocket implements OkxSocketInterface
             try {
                 if ($this->isConnected) {
                     $this->factory->getWebsocket()->send('ping');
-                    echo "{$this->factory->getWebsocket()->getTitle()}-{$this->factory->getWebsocket()->id}-发送ping:" . date("Y-m-d H:i:s", time()) . PHP_EOL;
                     $this->factory->getWebsocket()->incrAlreadyRunTs($this->option['ping_interval']);
                 }
             } catch (\Throwable $e) {
@@ -226,6 +224,10 @@ class OkxSocket implements OkxSocketInterface
         });
     }
     
+    /**
+     * 检查pong是否超时
+     * @return bool
+     */
     public function checkPongTimeOut(): bool
     {
         return time() - $this->factory->getWebsocket()->getLastPongTime() > 2 * $this->option['ping_interval'];
@@ -252,7 +254,7 @@ class OkxSocket implements OkxSocketInterface
             $this->reconnect();
             return;
         }
-       
+        
         if (!$this->startOver2PingTimes()) {
             // 两个ping后开始检查
             return;

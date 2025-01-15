@@ -103,9 +103,9 @@ class ApiConst
     // 获取余币宝余额
     const REST_FINANCE_BALANCE = '/api/v5/finance/savings/balance';
     // 申购/赎回余币宝
-    const REST_FINANCE_PURCHASE = '/api/v5/finance/purchase-redempt';
+    const REST_FINANCE_PURCHASE = '/api/v5/finance/savings/purchase-redempt';
     // 获取出借明细
-    const REST_FINANCE_GET_LENDING_HISTORY = '/api/v5/finance/lending-history';
+    const REST_FINANCE_GET_LENDING_HISTORY = '/api/v5/finance/savings/lending-history';
     // 所有产品行情信息
     const REST_MARKET_TICKERS = '/api/v5/market/tickers';
     // 单个产品行情信息
