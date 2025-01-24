@@ -68,6 +68,7 @@ class OrderRequest
      */
     protected string $tag = '';
     
+    
     /**
      * 委托单信息
      * @var AttachAlgoOrdsRequest|null

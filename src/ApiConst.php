@@ -60,6 +60,8 @@ class ApiConst
     const REST_ACCOUNT_GET_BILLS = '/api/v5/account/bills';
     // 获取账单流水(近3月)
     const REST_ACCOUNT_GET_BILL_ARCHIVE = '/api/v5/account/bill-archive';
+    // 设置账户模式
+    const REST_ACCOUNT_SET_ACCOUNT_LEVEL = '/api/v5/account/set-account-level';
     // 设置持仓模式
     const REST_SET_POS_MODE = '/api/v5/account/set-position-mode';
     // 获取杠杆

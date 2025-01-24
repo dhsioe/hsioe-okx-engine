@@ -172,7 +172,6 @@ class ApiBase
         if (!$response || $response['code'] != 0) {
             throw new OkxApiException($response['msg'] ?? "请求失败!");
         }
-        
         return $response;
     }
 }

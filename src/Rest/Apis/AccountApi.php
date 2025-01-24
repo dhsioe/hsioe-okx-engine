@@ -163,4 +163,16 @@ class AccountApi extends ApiBase
         $requestPath = ApiBase::toGetUrl(ApiConst::REST_ACCOUNT_GET_BILL_ARCHIVE, $request->toArray());
         return $this->_request($requestPath, 'GET');
     }
+    
+    /**
+     * 设置账户模式
+     * @param string $acctlV
+     * @return array
+     * @throws GuzzleException
+     * @throws OkxApiException
+     */
+    public function setAccountLevel(string $acctlV = '2'): array
+    {
+        return $this->_request(ApiConst::REST_ACCOUNT_SET_ACCOUNT_LEVEL, 'POST', ['acctLv' => $acctlV]);
+    }
 }
