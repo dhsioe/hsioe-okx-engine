@@ -37,6 +37,12 @@ class OkxWebsocketConnection extends AsyncTcpConnection
      */
     protected int $lastPongTime = 0;
     
+    /**
+     * 链接是否断开
+     *
+     * @var bool
+     */
+    protected bool $isConnected = false;
     
     public function setTitle(string $title)
     {
@@ -92,5 +98,23 @@ class OkxWebsocketConnection extends AsyncTcpConnection
     public function getLastPongTime(): int
     {
         return $this->lastPongTime;
+    }
+    
+    /**
+     * 设置状态
+     * @param bool $isConnected
+     */
+    public function setIsConnected(bool $isConnected): void
+    {
+        $this->isConnected = $isConnected;
+    }
+    
+    /**
+     * 是否断开
+     * @return bool
+     */
+    public function isConnected(): bool
+    {
+        return $this->isConnected;
     }
 }

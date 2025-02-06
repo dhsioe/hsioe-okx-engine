@@ -34,9 +34,6 @@ class OkxSocket implements OkxSocketInterface
      */
     protected array $option = [];
     
-    
-    protected bool $isConnected = false;
-    
     /**
      * 链接工厂
      * @var WebsocketFactory
@@ -87,13 +84,13 @@ class OkxSocket implements OkxSocketInterface
         
         // 链接成功
         $websocket->onConnect = function (OkxWebsocketConnection $con) {
-            $this->isConnected = true;
+            $con->setIsConnected(true);
             $this->onConnect($con);
         };
         
         // 链接关闭
         $websocket->onClose = function (OkxWebsocketConnection $con) {
-            $this->isConnected = false;
+            $con->setIsConnected(false);
             $this->onClose($con);
         };
         
@@ -212,7 +209,7 @@ class OkxSocket implements OkxSocketInterface
     {
         Timer::add($this->option['ping_interval'], function () {
             try {
-                if ($this->isConnected) {
+                if ($this->getFactory()->getWebsocket()->isConnected()) {
                     $this->factory->getWebsocket()->send('ping');
                     $this->factory->getWebsocket()->incrAlreadyRunTs($this->option['ping_interval']);
                 }
@@ -250,8 +247,8 @@ class OkxSocket implements OkxSocketInterface
      */
     public function checkStatus(): void
     {
-        if (!$this->isConnected) {
-            $this->reconnect();
+        if (!$this->factory->getWebsocket()->isConnected()) {
+            $this->factory->close();
             return;
         }
         
