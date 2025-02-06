@@ -68,7 +68,13 @@ class OrderRequest
      */
     protected string $tag = '';
     
-    
+    /**
+     * 计价货币(币币交易)
+     * quoty_ccy: 计价货币
+     * base_ccy: 交易货币
+     * @var string
+     */
+    protected string $tgtCcy = '';
     /**
      * 委托单信息
      * @var AttachAlgoOrdsRequest|null
@@ -233,6 +239,24 @@ class OrderRequest
     public function getPosSide(): string
     {
         return $this->posSide;
+    }
+    
+    /**
+     * 设置计价货币
+     * @param string $tgtCcy
+     */
+    public function setTgtCcy(string $tgtCcy): void
+    {
+        $this->tgtCcy = $tgtCcy;
+    }
+    
+    /**
+     * 获取计价货币
+     * @return string
+     */
+    public function getTgtCcy(): string
+    {
+        return $this->tgtCcy;
     }
     
     public function toArray(): array

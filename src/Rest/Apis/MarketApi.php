@@ -93,4 +93,19 @@ class MarketApi extends ApiBase
         $requestPath = ApiBase::toGetUrl(ApiConst::REST_MARKET_HISTORY_CANDLES, $request->toArray());
         return $this->_request($requestPath, 'GET');
     }
+    
+    /**
+     * 获取交易产品数据
+     *
+     * @link https://www.okx.com/docs-v5/zh/#public-data-rest-api-get-instruments
+     * @param string $instType 产品类型
+     * @return array
+     * @throws GuzzleException
+     * @throws OkxApiException
+     */
+    public function getInstruments(string $instType = 'SWAP'): array
+    {
+        $requestPath = ApiBase::toGetUrl(ApiConst::REST_MARKET_INSTRUMENTS,['instType'=>$instType]);
+        return $this->_request($requestPath,'GET');
+    }
 }

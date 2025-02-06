@@ -30,7 +30,8 @@ class TestAccountApi extends ApiTestCase
      */
     public function testAccountBalance()
     {
-        $res = $this->api->getBalance();
+        $res = $this->api->getBalance('BTC');
+        print_r($res);
         $this->assertIsArray($res);
     }
     
@@ -101,6 +102,14 @@ class TestAccountApi extends ApiTestCase
     {
         $res = $this->api->getLeverage('BTC-USDT-SWAP,ETH-USDT-SWAP');
         echo json_encode($res) . PHP_EOL;
+        $this->assertEquals(0, $res['code']);
+    }
+    
+    
+    public function testGetPosition(): void
+    {
+        $res = $this->api->getPositions('MARGIN');
+        print_r($res);
         $this->assertEquals(0, $res['code']);
     }
 }

@@ -36,7 +36,6 @@ class TestMarketApi extends ApiTestCase
     {
         $res = $this->api->tickers('OPTION');
         $this->assertEquals(0, $res['code']);
-        print_r($res);
         $res1 = $this->api->ticker('BTC-USDT-SWAP');
         $this->assertEquals(0, $res1['code']);
     }
@@ -54,7 +53,19 @@ class TestMarketApi extends ApiTestCase
         
         
         $res1 = $this->api->getHistoryCandles(new CandleRequest(['instId' => 'BTC-USDT-SWAP']));
-        print_r($res1);
         $this->assertEquals(0, $res1['code']);
+    }
+    
+    /**
+     * 获取交易产品基本信息
+     *
+     * @return void
+     * @throws GuzzleException
+     * @throws OkxApiException
+     */
+    public function testGetInstrument()
+    {
+        $res = $this->api->getInstruments('SPOT');
+        $this->assertEquals(0, $res['code']);
     }
 }
