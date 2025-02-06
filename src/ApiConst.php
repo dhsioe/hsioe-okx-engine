@@ -35,11 +35,11 @@ class ApiConst
     const WEBSOCKET_BUSINESS_URL = 'ws://ws.okx.com:8443/ws/v5/business';
     
     // 虚拟盘公共链接
-    const WEBSOCKET_TEST_PUBLIC_URL = 'wss://wspap.okx.com:8443/ws/v5/public';
+    const WEBSOCKET_TEST_PUBLIC_URL = 'ws://wspap.okx.com:8443/ws/v5/public';
     // 模拟盘私有链接
-    const WEBSOCKET_TEST_PRIVATE_URL = 'wss://wspap.okx.com:8443/ws/v5/private';
+    const WEBSOCKET_TEST_PRIVATE_URL = 'ws://wspap.okx.com:8443/ws/v5/private';
     // 模拟盘业务链接
-    const WEBSOCKET_TEST_BUSINESS_URL = 'wss://wspap.okx.com:8443/ws/v5/business';
+    const WEBSOCKET_TEST_BUSINESS_URL = 'ws://wspap.okx.com:8443/ws/v5/business';
     
     // 设置杠杆
     const REST_SET_LEVERAGE = '/api/v5/account/set-leverage';
@@ -124,4 +124,6 @@ class ApiConst
     const REST_TRADE_GET_FILLS_HISTORY = '/api/v5/trade/fills-history';
     // 获取历史成交记录(近3天)
     const REST_TRADE_GET_FILLS = '/api/v5/trade/fills';
+    // 获取币种信息
+    const REST_MARKET_INSTRUMENTS = '/api/v5/public/instruments';
 }
