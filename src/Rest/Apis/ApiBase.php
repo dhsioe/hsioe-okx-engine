@@ -170,7 +170,7 @@ class ApiBase
     public function _checkResults(array $response): array
     {
         if (!$response || $response['code'] != 0) {
-            throw new OkxApiException($response['msg'] ?? "请求失败!");
+            throw new OkxApiException(json_encode($response));
         }
         return $response;
     }
