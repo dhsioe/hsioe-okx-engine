@@ -112,4 +112,17 @@ class TestAccountApi extends ApiTestCase
         print_r($res);
         $this->assertEquals(0, $res['code']);
     }
+    
+    /**
+     * 设置账户模式
+     * @return void
+     * @throws GuzzleException
+     * @throws OkxApiException
+     */
+    public function testSetAccountLevel(): void
+    {
+        $res = $this->api->setAccountLevel('2');
+        print_r($res);
+        $this->assertEquals(0,$res['code']);
+    }
 }
