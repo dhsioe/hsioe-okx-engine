@@ -12,6 +12,7 @@ namespace Hsioe\QuantOkxApi\Tests\rest;
 use GuzzleHttp\Exception\GuzzleException;
 use Hsioe\QuantOkxApi\OkxApi;
 use Hsioe\QuantOkxApi\Rest\Apis\Req\AmendOrderAlgoRequest;
+use Hsioe\QuantOkxApi\Rest\Apis\Req\CommonOrderRequest;
 use Hsioe\QuantOkxApi\Rest\Apis\Req\FillsHistoryRequest;
 use Hsioe\QuantOkxApi\Rest\Apis\Req\HistoryOrderRequest;
 use Hsioe\QuantOkxApi\Rest\Apis\Req\OrderAlgoRequest;
@@ -162,5 +163,16 @@ class TestTradeApi extends ApiTestCase
         
         print_r($res1);
         $this->assertEquals(0, $res1['code']);
+    }
+    
+    
+    public function testClosePosition(): void
+    {
+        $req = new CommonOrderRequest([]);
+        $req->setInstId('SOL-USDT-SWAP');
+        $req->setPosSide('long');
+        $res  = $this->api->closePosition($req);
+        print_r($res);
+        $this->assertEquals(0,$res['code']);
     }
 }
